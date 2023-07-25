@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  exercise-service_v1:
+    image: stevenpadilla/exercise_service:1.0.0
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    container_name: exercise-service
+    env_file:
+      - .env
+    expose:
+      - '1709'
+    ports:
+      - '3003:1709'
+    command: node dist/src/index.js
